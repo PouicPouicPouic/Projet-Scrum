@@ -1,5 +1,7 @@
 import pdftotext
 
+print("coucou")
+
 # Load your PDF
 with open("Das_Martins.pdf", "rb") as f:
     pdf = pdftotext.PDF(f)
