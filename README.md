@@ -1,6 +1,5 @@
-arseur d'articles scientifiques en format texte
+# Parseur d'articles scientifiques en format texte
 																								 
-Antoine ARIBARD, Matthias BRZUSTOWSKI, Louis CART-GRANDJEAN, Arthur CASANOVA
-============================================================================================================
-Le 
-============================================================================================================
+## Antoine ARIBARD, Matthias BRZUSTOWSKI, Louis CART-GRANDJEAN, Arthur CASANOVA
+
+### Fonctionnement
