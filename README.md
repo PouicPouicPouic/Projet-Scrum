@@ -1,3 +1,6 @@
-Projet de développement - SCRUM : 
+arseur d'articles scientifiques en format texte
+																								 
 Antoine ARIBARD, Matthias BRZUSTOWSKI, Louis CART-GRANDJEAN, Arthur CASANOVA
-
+============================================================================================================
+Le 
+============================================================================================================
