@@ -72,6 +72,15 @@ class Header(Paragraphe) :
         self.auteur = ""
         self.abstract = ""
         self.position = 0
+        
+
+    """
+        Méthode to_string :
+        Aucun paramètre
+        Retourne une string avec les contenus des différents attributs
+    """
+    def ___str__(self) -> str:
+        return "Titre du documents :\n\t" + self.titreArticle + "\nAuteur(s) :\n\t" + self.auteur + "\nAbstract :\n\t" + self.abstract
 
 
 #______________________________________________________________________________________________________________________
