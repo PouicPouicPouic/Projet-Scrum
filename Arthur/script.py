@@ -32,7 +32,7 @@ print(a)
 def main() :
     print("main")
     
-#obligatoire :
+#obligatoire si on utilise un main :
 if __name__ == "__main__":
     main()
     
