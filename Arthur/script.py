@@ -1,8 +1,7 @@
 #!usr/bin/python
 
 import sys
-print(sys.argv) #sys.argv donne une liste d'arguments de type chaine de caractères par défaut
-#à ajouter au début du programme
+#sys.argv donne une liste d'arguments de type chaine de caractères par défaut
 import os
 import os.path
 import shutil
@@ -14,6 +13,7 @@ import shutil
 a = sys.argv[0] #peu importe l'entrée, renvoie le nom de ce fichier
 print(a)
 
+"""
 a = sys.argv[1] #renvoie l'entrée numéro 1
 print(a)
 
@@ -24,6 +24,7 @@ print(a)
     
 a = int(sys.argv[3])
 print(a)
+"""
 
 #############################################################################################
 
@@ -32,7 +33,7 @@ print(a)
 def main() :
     print("main")
     
-#obligatoire si on utilise un main :
+#obligatoire si on utilise main :
 if __name__ == "__main__":
     main()
     
@@ -52,23 +53,5 @@ if os.path.isdir(arg):
     else:
        print("Le dossier '%s' a été crée." %dire)
        os.makedirs(dire)
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
+
+#############################################################################################
