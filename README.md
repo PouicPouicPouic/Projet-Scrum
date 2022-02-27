@@ -4,7 +4,7 @@
 
 ### Fonctionnement :
 
-Dans un terminal, se placer dans le répertoire contenant le programme python avec la commande suivante :
+Ouvrir un terminal, puis se placer dans le répertoire contenant le programme python avec la commande suivante :
 'cd ~/repertoire'
 
 Taper ensuite la commande 'chmod a+x script.py'. Celle-ci indique que le programme est un fichier exécutable, et que tous les utilisateurs ont les droits d'exécution.
