@@ -1,0 +1,11 @@
+cd xxxxx
+
+chmod a+x script.py
+#indique qu'il s'agit d'un programme exécutable (+x)
+#all users (a)
+
+python3 script.py
+#exécution sans arguments
+
+python3 script.py arg1 arg2
+#exécution avec des arguments
