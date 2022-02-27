@@ -55,3 +55,13 @@ if os.path.isdir(arg):
        os.makedirs(dire)
 
 #############################################################################################
+
+#création des fichiers txt :
+    
+    for fic in arg : #on parcourt le dossier en entrée
+        file = open(os.path.join(dire, fic[:-4]), "w+") #on crée un fichier ayant pour chemin arg/fic, en enlevant le ".pdf"
+        #"w+" indique que l'on crée un fichier ou que l'on écrase le fichier portant le même nom
+        
+        #traitement
+        file.write("""texte de sortie""")
+        file.close()
