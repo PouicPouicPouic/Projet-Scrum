@@ -80,7 +80,7 @@ class Header :
         Retourne une string avec les contenus des différents attributs
     """
     def ___str__(self) -> str:
-        return "Titre du documents :\n\t" + self.titreArticle + "\nAuteur(s) :\n\t" + self.auteur + "\nAbstract :\n\t" + self.abstract
+        return "Nom du fichier :\n\t"+self.nomFichier+".pdf\nTitre article :\n\t" + self.titreArticle + "\nAuteur(s) :\n\t" + self.auteur + "\nAbstract :\n\t" + self.abstract
 
 
 #______________________________________________________________________________________________________________________
