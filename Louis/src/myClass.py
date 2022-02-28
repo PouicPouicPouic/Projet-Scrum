@@ -53,7 +53,7 @@ class Paragraphe :
 #______________________________________________________________________________________________________________________
 
 
-class Header(Paragraphe) :
+class Header :
     """
         Class Header héritant de la class Paragraphe, correspondant à l'entète du fichier : toute la partie avant (Introduction)
         "Un entete est un paragraphe à la position 0 (le premier paragrapge du pdf)"
