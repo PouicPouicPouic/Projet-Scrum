@@ -14,5 +14,5 @@ Pour garder une structure de texte la plus précise selon l'originale,le program
 
 3 - Entrer la commande 'python3 script.py '<chemin d'accès>' '<-t>/<-x>'. L'argument <chemin d'accès> est l'adresse à laquelle se trouve le répertoire contenant les fichiers PDF. L'argument <-t>/<-x> permet de spécifier le format des fichiers en sortie : txt ou xml
 	
-Le programme efface puis remplace dans ce répertoire le sous-répertoire nommé 'txt'/'xml' s'il existe déjà, ou le crée sinon. Il va ensuite créer les fichiers txt/xml dans ce sous-dossier.
+Le programme efface puis remplace dans ce répertoire le sous-répertoire nommé 'txt'/'xml' s'il existe déjà, ou le crée sinon. Il va ensuite créer les fichiers txt/xml dans ce sous-dossier. 
 	
