@@ -1,7 +1,4 @@
 
-from email import header
-
-
 class Paragraphe :
     """
         Classe Paragraphe aiyant 3 attributs : (exemple : "4.3 sentence combination" dans jing-cutepaste.pdf est un paragraphe)
@@ -10,7 +7,6 @@ class Paragraphe :
             integer position : numero du Paragaraphe dans la Partie
     """
     
-
     """
         CONSTRUCTEUR
         Paramètres :
@@ -20,8 +16,8 @@ class Paragraphe :
     """
     def __init__(self,texte,position,title="") :
         self.texte = texte
-        self.position = position
         self.title = title
+        self.position = position
 
 
     """
@@ -41,8 +37,10 @@ class Paragraphe :
         retourne le contenu de texte en version xml
     """
     def toStringXml(self) -> str:
-        return "toStringXML() non fait"
-
+        ParaReturn = ""
+        ParaReturn+="/t<titreparagraphe>"+self.title+"</titreparagraphe>\n"
+        ParaReturn+="/t<paragraphe>"+self.texte+"</paragraphe>\n"
+        return ParaReturn
     """
         Méthode isValidParagraph retournant un booléen
             True : si texte fini par "\n"
@@ -51,17 +49,6 @@ class Paragraphe :
     """
     def isValidParagraph (self) -> bool:
         return self.texte[-1]=="\n"
-
-
-    """
-        Méthode isHeader retournant un booléen
-            True : position vaut 0
-            False : sinon
-        Aucun paramètre
-    """
-    def isHeader(self) -> bool:
-        return self.position == 0
-
 
 #______________________________________________________________________________________________________________________
 
@@ -82,11 +69,10 @@ class Header :
     def __init__(self,nomFichier) :
         self.nomFichier = nomFichier
         self.titreArticle = ""
-        self.auteur = ""
-        self.abstract = ""
-        self.position = 0
-        
-
+        self.auteur = []
+        self.mail = []
+        self.abstract = ""        
+        self.biblio = ""
     """
         Méthode toStringTxt :
         Aucun paramètre
@@ -94,11 +80,18 @@ class Header :
     """
     def toStringTxt(self) -> str:
         headerReturn = ""
-        headerReturn+="Nom du fichier :\n\t" + self.nomFichier + "\n"
-        headerReturn+="Titre :\n\t" + self.titreArticle + "\n"
-        headerReturn+="Auteur(s) :\n\t"+self.auteur + "\n"
-        headerReturn+="Abstract :\n\t" + self.abstract + "\n"
-        #headerReturn+="Biblio :\n\t" + self.biblio + "\n"
+        headerReturn+="\tNom du fichier :\n\t" + self.nomFichier + "\n"
+        headerReturn+="\tTitre :\n\t" + self.titreArticle + "\n"
+
+        headerReturn+="\tAuteur(s) :\n"
+        for i in range (len(self.auteur)):
+                headerReturn+="\t"+self.auteur[i]+ "\n"
+                if self.mail[i]!="":
+                    headerReturn+="\t"+self.mail[i]+ "\n"
+            
+        headerReturn+="\tAbstract :\n" + self.abstract + "\n"
+
+        headerReturn+="\tBiblio :\n" + self.biblio + "\n"
         return headerReturn
     
     """
@@ -107,14 +100,26 @@ class Header :
         Retourne le texte du header séparé selons contenus des différents attributs en version XML
     """
     def toStringXml(self) -> str:
+        
         headerReturn = ""
-        headerReturn+="<article>\n"
+        headerReturn+="<header>\n"
         headerReturn+="\t<preamble>" + self.nomFichier + "</preamble>\n"
         headerReturn+="\t<titre>" + self.titreArticle + "</titre>\n"
-        headerReturn+="\t<auteur>" + self.auteur + "</auteur>\n"
-        headerReturn+="\t<abstract>" + self.abstract + "</abstract>\n"
-        #headerReturn+="\t<biblio>" + self.biblio + "</biblio>\n"
-        headerReturn+="</article>\n"
+
+        headerReturn+="\t<auteurs>\n"
+        for i in range (len(self.auteur)):
+                headerReturn+="\t\t<auteur>\n"
+                headerReturn+="\t\t\t<name>"+self.auteur[i]+"</name>\n"
+                if self.mail[i]!="":
+                    headerReturn+="\t\t\t<mail>"+self.mail[i]+"</mail>\n"
+                headerReturn+="\t\t</auteur>\n"
+        headerReturn+="\t</auteurs>\n"
+
+        headerReturn+="\t<abstract>\n" + self.abstract + "\n\t</abstract>\n"
+
+        headerReturn+="\t<biblio>\n" + self.biblio + "\n\t</biblio>\n"
+
+        headerReturn+="</header>\n"
         return headerReturn
 
 
@@ -142,10 +147,11 @@ class Partie :
     """"
         Méthode toStringTxt
         aucun paramètre
-        retourne le contenu de texte en version TXT
+        retourne le contenu d'une partie en version TXT
     """
     def toStringTxt(self) -> str:
         partieReturn = ""
+        partieReturn+="\t"+self.titre+"\n"
         for i in self.listPara :
             partieReturn+= i.toStringTxt()
         return partieReturn
@@ -153,12 +159,15 @@ class Partie :
     """"
         Méthode toStringXml 
         aucun paramètre
-        retourne le contenu de texte en version XML
+        retourne le contenu de d'une partie en version XML
     """
-    def toStringTxt(self) -> str:
+    def toStringXml(self) -> str:
         partieReturn = ""
+        partieReturn+="<partie>"
+        partieReturn+=self.titre+"\n"
         for i in self.listPara :
             partieReturn+= i.toStringTxt()
+        partieReturn+="</partie>"
         return partieReturn
 
 
@@ -204,4 +213,9 @@ class Texte :
     """
     def toStringXml(self) -> str:
         texteReturn = ""
+        texteReturn = "<article>\n"
+        texteReturn+=self.header.toStringTxt()
+        for p in self.parties :
+            texteReturn+=p.toStringTxt()
+        texteReturn = "</article>\n"
         return texteReturn
