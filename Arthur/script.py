@@ -80,8 +80,8 @@ elif os.path.isfile(arg1) and arg1[-4:] == '.pdf' :
 ##########################################################################################################################################################################################
 
 #détection du format texte spécifié en entrée (-t) :
-arg2 = sys.argv[2] #peut contenir -t ou -x, ou être vide
-arg3 = sys.argv[3] #peut contenir -t ou -x, ou être vide
+arg2 = sys.argv[2] #peut contenir -t ou -x
+arg3 = sys.argv[3] #peut contenir -t ou -x
 if (arg2 == '-t' or arg3 == '-t') or (arg2 == False and arg3 == False) :
     #une chaîne de caractères vide est considérée comme False
     #par défaut, si aucun paramètre définissant le format n'est spécifié, le format de sortie sera en .txt
@@ -116,11 +116,11 @@ elif arg2 == '-x' or arg3 == '-x' :
 		    #traitement
             file.write("""texte traité""")
             file.close()
-          
+
 ##########################################################################################################################################################################################
 ##########################################################################################################################################################################################
-        
+       
 else :
 	#renvoie une exception + un message
-    print("Erreur : le format spécifié n'est pas reconnu")
+    raise Exception('Les arguments doivent être "-t" et/ou "-x". Les arguments étaient : {}'.format(arg2),format(arg3))
         
