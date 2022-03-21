@@ -116,5 +116,3 @@ else :
     		    #traitement
                 file.write(trait.Traitement(fic).toStringXml())
                 file.close()
-
-
