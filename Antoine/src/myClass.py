@@ -59,7 +59,6 @@ class Header :
         "Un entete est un paragraphe à la position 0 (le premier paragrapge du pdf)"
         5 attributs dont 3 hérité
     """
-    
 
     """
         CONSTRUCTEUR
