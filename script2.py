@@ -17,16 +17,16 @@ except IndexError:
     raise Exception("Le chemin fourni n'est pas valide.")
 
 arg2 = ''
-try :
+try : #permet de détecter si le deuxième argument est renseigné
     arg2 = sys.argv[2]
 except IndexError :
     arg2 = '-t'
 
 arg3 =''
-try :
+try : #permet de détecter si le troisième argument est renseigné
     arg3 = sys.argv[3]
 except IndexError :
-    if arg2 == '-t' :       arg3 = '-t'
+    if arg2 == '-t' :       arg3 = '-t' #permet de n'avoir qu'un seul type xml ou txt si l'on ne demande que l'un ou l'autre
     elif arg2 == '-x' :     arg3 = '-x'
     else :                  arg3 = arg3
 
