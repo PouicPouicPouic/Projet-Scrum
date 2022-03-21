@@ -1,7 +1,7 @@
 
 class Paragraphe :
     """
-        Classe Paragraphe aiyant 3 attributs : (exemple : "4.3 sentence combination" dans jing-cutepaste.pdf est un paragraphe)
+        Classe Paragraphe ayant 3 attributs : (exemple : "4.3 sentence combination" dans jing-cutepaste.pdf est un paragraphe)
             string texte : contenu du Paragraphe
             string title : titre donner au Paragraphe
             integer position : numero du Paragaraphe dans la Partie
@@ -14,9 +14,10 @@ class Paragraphe :
             integer  position : position du paragraphe dans la partie
             string  title : titre du paragraphe 
     """
-    def __init__(self,texte,position,title="") :
+    
+    def __init__(self,texte,position,titre="") :
         self.texte = texte
-        self.title = title
+        self.titre = titre
         self.position = position
 
 
@@ -59,6 +60,7 @@ class Header :
         "Un entete est un paragraphe à la position 0 (le premier paragrapge du pdf)"
         5 attributs dont 3 hérité
     """
+    
 
     """
         CONSTRUCTEUR
@@ -141,32 +143,53 @@ class Partie :
     def __init__(self, titre) :
         self.listPara=[]
         self.titre = titre
+        self.balise = ""
 
 
-    """"
+    """
         Méthode toStringTxt
         aucun paramètre
         retourne le contenu d'une partie en version TXT
     """
     def toStringTxt(self) -> str:
         partieReturn = ""
-        partieReturn+="\t"+self.titre+"\n"
+
+        #detection du type de partie
+        if self.titre == "introduction" | self.titre == "conclusion" | self.titre == "discussion":
+            self.balise = self.titre
+
+        #si c'est une partie spéciale, balise à ajouter
+        if self.balise!="":
+            partieReturn+="\t"+self.balise+" :\n"
+
         for i in self.listPara :
             partieReturn+= i.toStringTxt()
         return partieReturn
 
-    """"
+    """
         Méthode toStringXml 
         aucun paramètre
         retourne le contenu de d'une partie en version XML
     """
     def toStringXml(self) -> str:
         partieReturn = ""
-        partieReturn+="<partie>"
+
+        #detection du type de partie
+        if self.titre == "introduction" | self.titre == "conclusion" | self.titre == "discussion":
+            self.balise = self.titre
+
+        #si c'est une partie spéciale, balise à ajouter
+        if self.balise!="":
+            partieReturn+="<"+self.balise+">"
+
         partieReturn+=self.titre+"\n"
         for i in self.listPara :
             partieReturn+= i.toStringTxt()
-        partieReturn+="</partie>"
+
+        #si c'est une partie spéciale, balise fermeture à ajouter
+        if self.balise!="":
+            partieReturn+="</"+self.balise+">"
+
         return partieReturn
 
 
@@ -202,7 +225,11 @@ class Texte :
         texteReturn = ""
         texteReturn+=self.header.toStringTxt()
         for p in self.parties :
-            texteReturn+=p.toStringTxt()
+            if p.titre == "introdution":
+                texteReturn+=p.toStringTxt()
+                texteReturn+="\tcorps :\n"      #après l'intro, debut du corps
+            else :
+                texteReturn+=p.toStringTxt()        
         return texteReturn
     
     """
@@ -213,8 +240,15 @@ class Texte :
     def toStringXml(self) -> str:
         texteReturn = ""
         texteReturn = "<article>\n"
-        texteReturn+=self.header.toStringTxt()
+        texteReturn+=self.header.toStringXml()  #ajoute le header
         for p in self.parties :
-            texteReturn+=p.toStringTxt()
+            if p.titre == "introdution":
+                texteReturn+=p.toStringXml()    #ajoute l'intro
+                texteReturn+="<corps>"          #après l'intro, début du corps
+            elif p.titre == "conclusion":
+                texteReturn+="</corps>"         #avant la conclusion, fin du corps
+                texteReturn+=p.toStringXml()    #ajoute la conclusion
+            else :
+                texteReturn+=p.toStringXml()    #ajoute une partie quelconque
         texteReturn = "</article>\n"
         return texteReturn
