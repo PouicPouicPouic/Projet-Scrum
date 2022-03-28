@@ -9,20 +9,25 @@ import shutil
 ##########################################################################################################################################################################################
 ##########################################################################################################################################################################################
 
-arg2 = ''
+arg2 = '' #format
 try :
     arg2 = sys.argv[2]
 except IndexError :
     arg2 = '-t'
 
-arg3 =''
+arg3 ='' #format
 try :
     arg3 = sys.argv[3]
 except IndexError :
     if arg2 == '-t' :       arg3 = '-t'
     elif arg2 == '-x' :     arg3 = '-x'
     else :                  arg3 = arg3
-
+	
+arg4 ='' #index de l'interface contenant une liste de textes
+try :
+    arg4 = sys.argv[4]
+except IndexError :
+    arg4 = '0'
 
 if not ( arg2 in ['-t','-x'] and arg3 in ['-t','-x'] ):
 	#renvoie une exception + un message
