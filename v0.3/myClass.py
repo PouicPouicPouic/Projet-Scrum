@@ -38,8 +38,8 @@ class Paragraphe :
     """
     def toStringXml(self) -> str:
         ParaReturn = ""
-        ParaReturn+="/t<titreparagraphe>"+self.title+"</titreparagraphe>\n"
-        ParaReturn+="/t<paragraphe>"+self.texte+"</paragraphe>\n"
+        ParaReturn+="<titreparagraphe>"+self.title+"</titreparagraphe>\n"
+        ParaReturn+="<paragraphe>"+self.texte+"</paragraphe>\n"
         return ParaReturn
     """
         Méthode isValidParagraph retournant un booléen
@@ -79,18 +79,18 @@ class Header :
     """
     def toStringTxt(self) -> str:
         headerReturn = ""
-        headerReturn+="\tNom du fichier :\n\t" + self.nomFichier + "\n"
-        headerReturn+="\tTitre :\n\t" + self.titreArticle + "\n"
+        headerReturn+="Nom du fichier :\n\t" + self.nomFichier + "\n"
+        headerReturn+="Titre :\n\t" + self.titreArticle + "\n"
 
-        headerReturn+="\tAuteur(s) :\n"
+        headerReturn+="Auteur(s) :\n"
         for i in range (len(self.auteur)):
                 headerReturn+="\t"+self.auteur[i]+ "\n"
                 if len(self.mail) > 0 and len(self.mail) == len(self.auteur):
                     headerReturn+="\t"+self.mail[i]+ "\n"
             
-        headerReturn+="\tAbstract :\n" + self.abstract + "\n"
+        headerReturn+="Abstract :\n" + self.abstract + "\n"
 
-        headerReturn+="\tBiblio :\n" + self.biblio + "\n"
+        headerReturn+="Biblio :\n" + self.biblio + "\n"
         return headerReturn
     
     """
