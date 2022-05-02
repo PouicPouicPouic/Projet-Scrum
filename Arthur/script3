@@ -91,7 +91,7 @@ else :
 
     #création des fichiers txt (si arg2 ou arg3 prend la valeur '-t') :
         for fic in textes : #on parcourt la liste des fichiers pdf
-            if
+            if #arg4[i] correspond avec textes[i]
             if fic[-4:] == '.pdf' : #équivalent fonction glob
                 file = open(os.path.join(dire, fic[:-4]+'.txt'), "w+") #création du fichier .txt
                 #on enlève '.pdf' à la fin du nom du fichier puis on ajoute '.txt'
