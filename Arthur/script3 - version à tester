@@ -46,9 +46,18 @@ else :
         if arg4 != 'all' : #filtre les fichiers à convertir selon ce qui est indiqué par arg4
             n = 0 
             while n < len(arg4-1) : #indique le nombre d'éléments à analyser (si on considère qu'il n'y a pas de doublons dans arg4)
+##########################################################################################################################################################################################
+		#si le programme écrase le répertoire passé en arg1, tous les fichiers non inclus dans arg4 (et donc que l'on ne souhaite pas parser) seront déruits.
+		#si le programme crée un sous-dossier/sur-dossier dans lequel on copie le répertoire dans arg1, alors tout va bien. 
+##########################################################################################################################################################################################
+
                 filtre = []
                 filtre.append(textes[arg4[n]]) #fonctionne si arg4 est considéré comme un int, pas si il est considéré comme une str /!\
                 textes = filtre
+##########################################################################################################################################################################################
+		#fin de la partie à tester (liste filtre + si besoin modifier les lignes 110 à 117)
+##########################################################################################################################################################################################
+
         #détection de l'entrée, qui doit être le chemin d'un répertoire :
         dire = os.path.join(arg1, "../result")
         #destruction/création du répertoire contenant les fichiers .txt et/ou .xml :
