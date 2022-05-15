@@ -112,17 +112,15 @@ else :
 
     #création des fichiers txt (si arg2 ou arg3 prend la valeur '-t') :
         for fic in textes : #on parcourt la liste des fichiers pdf
-            if arg4 == 'all' :
-                if fic[-4:] == '.pdf' : #équivalent fonction glob
-                    file = open(os.path.join(dire, fic[:-4]+'.txt'), "w+") #création du fichier .txt
-                    #on enlève '.pdf' à la fin du nom du fichier puis on ajoute '.txt'
-                    #"w+" signifie que l'on remplace le fichier ayant le même nom s'il existe, et le crée le cas échéant
+            if fic[-4:] == '.pdf' : #équivalent fonction glob
+                "if arg4 == 'all' :" #non fonctionnel (arg4)
+                file = open(os.path.join(dire, fic[:-4]+'.txt'), "w+") #création du fichier .txt
+                #on enlève '.pdf' à la fin du nom du fichier puis on ajoute '.txt'
+                #"w+" signifie que l'on remplace le fichier ayant le même nom s'il existe, et le crée le cas échéant
                     
-                    #traitement
-                    file.write("""texte traité""")
-                    file.close()
-                    """ else :
-                    if fic[]"""
+                #traitement
+                file.write("""texte traité""")
+                file.close()
             
 ##########################################################################################################################################################################################
 ##########################################################################################################################################################################################
@@ -135,14 +133,13 @@ else :
 
     #création des fichiers XML (si arg2 ou arg3 prend la valeur '-x') :
         for fic in textes :
-            if arg4 == 'all' :
-                if fic[-4:] == '.pdf' :
-                    file = open(os.path.join(dire, fic[:-4]+'.xml'), "w+") #création du fichier .xml
+            if fic[-4:] == '.xml' :
+                "if arg4 == 'all' :" #non fonctionnel (arg4)
+                file = open(os.path.join(dire, fic[:-4]+'.xml'), "w+") #création du fichier .xml
                     
-                    #traitement
-                    file.write("""texte traité""")
-                    file.close()
-                    "  else :"
+                #traitement
+                file.write("""texte traité""")
+                file.close()
                     
 ##########################################################################################################################################################################################
 ##########################################################################################################################################################################################
