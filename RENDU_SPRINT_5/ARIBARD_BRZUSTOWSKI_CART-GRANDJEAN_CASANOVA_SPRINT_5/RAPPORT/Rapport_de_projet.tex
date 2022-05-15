@@ -1,0 +1,138 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{mathptmx} 
+
+
+\usepackage[pdftex]{graphicx} 
+\usepackage[english]{babel} 
+\usepackage[pdftex,linkcolor=black,pdfborder={0 0 0}]{hyperref} % 
+\usepackage{calc} 
+\usepackage{enumitem}
+
+
+
+\frenchspacing
+\linespread{1.2}
+\usepackage[a4paper, lmargin=0.1666\paperwidth, rmargin=0.1666\paperwidth, tmargin=0.1111\paperheight, bmargin=0.1111\paperheight]{geometry} 
+
+
+\usepackage[all]{nowidow} 
+\usepackage[protrusion=true,expansion=true]{microtype} 
+
+\usepackage{lipsum} 
+
+
+
+\begin{document} 
+
+\newlist{etapes}{enumerate}{3}
+
+\setlist[etapes, 1]
+{label=\arabic{etapesi}., 
+leftmargin=\parindent,
+rightmargin=10pt
+}
+
+\title{Parseur d'articles scientifiques au format texte}
+\date{15 mai 2022}
+
+
+\author{
+{Aribard Antoine}\\
+{Université Bretagne Sud}\\
+{aribard.e2103334@etud.univ-ubs.fr}\\
+\and
+{Brzustowski Matthias}\\
+{Université Bretagne Sud}\\
+{brzustowski.e1802762@etud.univ-ubs.fr}\\
+\and
+{Cart-Grandjean Louis}\\
+{Université Bretagne Sud}\\
+{cart-grandjean.e1803972@etud.univ-ubs.fr}\\
+\and
+{Casanova Arthur}\\
+{Université Bretagne Sud}\\
+{casanova.e1901754@etud.univ-ubs.fr}\\
+}
+
+
+\maketitle
+
+
+\begin{abstract} 
+Dans le cadre du projet de développment à réaliser ce semestre, notre équipe avait pour objectif la réalistion d'un parseur d'articles scientifiques au format texte.
+Cet analyseur a pour but de permettre aux scientifiques du laboratoire de l'IRISA un accès simple et concret aux informations dont ils ont besoin.
+
+Ce projet a été entièrement réalisé en suivant la méthode agile SCRUM. Le travail a été répartie en plusieurs "Sprints", et l'équipe a été en mesure d'adapter son travail en fonction des nouvelles demandes au cours de l'ensemble du semestre.
+
+Ce rapport de projet va permettre d'expliquer le fonctionnement général de l'analyseur, ainsi que les résultats obtenus lors de tests de précision.
+\end{abstract}
+
+\section{Méthode (explication du système)}
+Le parseur a été entièrement réalisé à l'aide du langage de programmation Python. Il est exécutable en ligne de commande depuis un terminal GNU/Linux. Lors de l'exécution, le programme doit prendre plusieurs paramètres : le chemin d'accès du dossier contenant les articles à parser , le choix du format texte en sortie (.txt ou .xml), ainsi que les noms des différents articles à analyser.
+
+
+\subsection{Exécution du programme}
+
+Pour exécuter le parseur, plusieurs étapes sont à réaliser : 
+
+\begin{etapes}
+\item  Ouvrir un terminal, puis se placer dans le répertoire contenant le programme python avec la commande suivante : 'cd'
+\item Entrer la commande suivante : 'chmod a+x script.py'. Celle-ci indique que le programme est un fichier exécutable, et que tous les utilisateurs ont les droits d'exécution.
+\item Entrer la commande suivante : 'python3 script.py " '<arg1>'  '<-t> || <-x>'  '<arg4>' ".
+
+L'argument '<arg1>' est l'adresse à laquelle se trouve le répertoire à parser. 
+
+L'argument '<-t> || <-x>' permet de spécifier le format des fichiers en sortie : .txt ou .xml (il est possible de sortir les articles aux deux formats en indiquant les deux arguments simultanément). 
+
+Enfin, l'argument '<arg4>' permet de spécifier quels sont les articles à analyser et à sortir au format demandé. Si plusieurs articles sont spécifiés, il faut les séparer à l'aide d'une virgule. En effet, tout le répertoire ne doit pas forcément être analyser. Il est donc nécessaire de connaître quels sont les articles que l'on souhaite parser.
+
+\end{etapes}
+
+\subsection{Fonctionnement du programme}
+
+Le programme analyse le répertoire entré en paramètre, contenant les articles au format PDF à traiter, puis, pour chaque article (demandé en paramètre), génère ce même article, au format TXT ou XML (précisé en ligne de commande).
+Pour chaque article à parsé, le programme réalise une recherche et un traitement de chaque section que peut contenir l'article, à savoir :
+
+\begin{itemize}
+
+\item Preambule (nom du fichier d'origine)
+\item Titre de l'article
+\item Auteurs (Nom, affiliation et adresse mail)
+\item Résumé de l'article
+\item Introduction
+\item Développement de l'article
+\item Conclusion de l'article
+\item Discussion de l'article
+\item Références bibilographiques de l'article
+\end{itemize}
+
+Pour conserver le contenu ainsi qu'une structure de texte la plus précise selon l'originale,le programme analyse les paragraphes contenues dans le texte, les tabulations, ainsi que les mot-clés (tel que 'Abstract' par exemple) pour savoir à quelle section correspond le segment traité.
+
+
+
+
+
+\section{Résultats}
+
+Une fois le programme implémenté et fonctionnel , une évaluation était nécessaire pour connaitre la précision du parseur, la structure ainsi que le contenu de l'article devant être respéctés au maximum.
+
+Pour ce faire, le package Python 'Sequence Matcher' a été mis à disposition, dans le but de comparer des paires de séquences d'entrée.
+De plus, 10 articles scientifiques ont été fournis dans le but de calculer une moyenne de précision du parseur sur ces 10 articles.
+La formule permettant de calculer la précision du parseur sur un article est la suivante : 
+
+\[ PrecisionTotal = \Sigma (Precision Par Sections)\]
+
+
+
+
+\section{Conclusion}
+
+Ce projet réalisé durant le semestre nous a permis d'apprendre à travailler en respectant la méthodologie SCRUM, méthode de travail désormais très répendu dans le monde du travail, de par sa capacité à optimiser la productivité.
+
+Tous réunis régulièrement à chaque réunion de plannification de Sprint, mais aussi lors de nombreuses Daily Scrum, nous avons ainsi pu mettre en relation nos différentes tâches à réaliser et le travail fourni de chacun, permettant ainsi de travailler de la façon la plus productive possible, en plus d'être prêt à toute adaptation nécessaire quant aux nouveaux besoin de nos clients.
+
+
+
+\end{document}
