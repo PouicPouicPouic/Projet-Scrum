@@ -42,23 +42,20 @@ else :
 
     if os.path.isdir(arg1):
         textes = os.listdir(arg1) #liste contenant les noms des fichiers contenus dans le répertoire passé en argument 1
-	
+        
 ##########################################################################################################################################################################################
         
-	if arg4 != 'all' : #filtre les fichiers à convertir selon ce qui est indiqué par arg4
+        if arg4 != 'all' : #filtre les fichiers à convertir selon ce qui est indiqué par arg4
             n = 0
             while n < len(arg4) : #indique le nombre d'éléments à analyser (si on considère qu'il n'y a pas de doublons dans arg4)
                 filtre = []
                 int_arg4 = int(arg4[n])
-                print(arg4)
-                print(int_arg4)
                 filtre.append(textes[int_arg4]) #fonctionne si arg4 est considéré comme un int, pas si il est considéré comme une str /!\
                 textes = filtre
                 n = n+1
-		
+                
 ##########################################################################################################################################################################################
-        
-	#détection de l'entrée, qui doit être le chemin d'un répertoire :
+        #détection de l'entrée, qui doit être le chemin d'un répertoire :
         dire = os.path.join(arg1, "result")
         #destruction/création du répertoire contenant les fichiers .txt et/ou .xml :
         if os.path.isdir(dire):
@@ -115,8 +112,6 @@ else :
                     #traitement
                     file.write("""texte traité""")
                     file.close()
-                    """ else :
-                    if fic[]"""
             
 ##########################################################################################################################################################################################
 ##########################################################################################################################################################################################
@@ -136,7 +131,6 @@ else :
                     #traitement
                     file.write("""texte traité""")
                     file.close()
-                    "  else :"
                     
 ##########################################################################################################################################################################################
 ##########################################################################################################################################################################################
