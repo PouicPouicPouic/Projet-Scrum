@@ -12,7 +12,10 @@ Pour garder une structure de texte la plus précise selon l'originale,le program
 
 2 - Entrer la commande 'chmod a+x script.py'. Celle-ci indique que le programme est un fichier exécutable, et que tous les utilisateurs ont les droits d'exécution.
 
-3 - Entrer la commande 'python3 script.py <chemin d'accès> <-t>/<-x> <articles>. L'argument <chemin d'accès> est l'adresse à laquelle se trouve le répertoire à parser. L'argument <-t>/<-x> permet de spécifier le format des fichiers en sortie : txt ou xml. Le paramètre <articles> permet de spécifier quels sont les articles à sortir au format demandé.
+3 - Entrer la commande 'python3 script.py <chemin d'accès> <-t>/<-x> <n° articles>.
+L'argument <chemin d'accès> est l'adresse à laquelle se trouve le répertoire à parser.
+L'argument <-t>/<-x> permet de spécifier le format des fichiers en sortie : txt ou xml. Il est possible d'obtenir les deux formats en entrant les arguments <-t> puis <-x>.
+Le paramètre <n° articles> permet de spécifier quels sont les articles à sortir au format demandé. Il se compose des numéros des articles séparés par une virgule et sans espaces. Si on souhaite traiter tous les fichiers, ce paramètre doit être vide ou contenir le texte 'all'.
 	
 Le programme efface puis remplace dans ce répertoire le sous-répertoire nommé 'txt'/'xml' s'il existe déjà, ou le crée sinon. Il va ensuite créer les fichiers txt/xml dans ce sous-dossier. 
 	
